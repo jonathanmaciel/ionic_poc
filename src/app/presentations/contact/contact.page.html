@@ -1,0 +1,95 @@
+<ion-toolbar>
+  <button class="toolbar-button" slot="start" [routerLink]="['/']">
+    <ion-icon class="toolbar-button-icon" name="arrow-back-outline"></ion-icon>
+  </button>
+  <button class="toolbar-button" slot="end" (click)="onContactButtonAddTouch()">
+    <ion-img class="toolbar-button-icon" [src]="toolbarButtonImageURL"></ion-img>
+  </button>
+  <ion-title class="toolbar-title">
+    <ion-row class="toolbar-title-label">{{ toolbarTitleLabel }}</ion-row>
+    <ion-row class="toolbar-subtitle-label">{{ toolbarSubtitleLabel }}</ion-row>
+  </ion-title>
+</ion-toolbar>
+<ion-content>
+  <div class="header-fixed" slot="fixed">
+    <form class="header-fixed-form-add" [class.header-fixed-form-edit]="isEditState" 
+        [formGroup]="formGroup">
+      <ion-avatar>
+        <ion-img class="header-fixed-avatar" src="/assets/icon/user.png"></ion-img>
+      </ion-avatar>
+      <ion-input type="text"
+          id="nameInput"
+          formControlName="nameInput"
+          [placeholder]="isNameInputInvalid ? 'digite seu nome...' : 'nome...'"
+          (ionFocus)="onInputFocus($event)"
+          (ionBlur)="onInputBlur($event)"
+          [class.header-fixed-form-input-focus]="isNameTextFocus"
+          [class.header-fixed-form-input-invalid]="isNameInputInvalid"
+          [(ngModel)]="contact.name"></ion-input>
+      <ion-input type="text" 
+          id="descriptionInput"
+          formControlName="descriptionInput" 
+          placeholder="descricao..."
+          (ionFocus)="onInputFocus($event)"
+          (ionBlur)="onInputBlur($event)"
+          [class.header-fixed-form-input-focus]="isDescriptionFocus"
+          [(ngModel)]="contact.description"></ion-input>
+      <ion-input *ngIf="contact.id == 0" type="text" 
+          id="contactMeansNameInput"
+          formControlName="contactMeansNameInput"
+          [placeholder]="isContactMeansNameInputInvalid ? 'digite o meio para contato...' : 'meio para contato...'"
+          (ionFocus)="onInputFocus($event)"
+          (ionBlur)="onInputBlur($event)"
+          [class.header-fixed-form-input-focus]="isContactMeansNameInputFocus"
+          [class.header-fixed-form-input-invalid]="isContactMeansNameInputInvalid"
+          [(ngModel)]="contact.means[0].name"></ion-input>
+      <ion-input *ngIf="contact.id == 0" type="text"
+          id="contactMeansValueInput"
+          formControlName="contactMeansValueInput" 
+          [placeholder]="isContactMeansValueInputInvalid ? 'digite o contato...' : 'contato...'"
+          (ionFocus)="onInputFocus($event)"
+          (ionBlur)="onInputBlur($event)"
+          [class.header-fixed-form-input-focus]="isContactMeansValueInputFocus"
+          [class.header-fixed-form-input-invalid]="isContactMeansValueInputInvalid"
+          [(ngModel)]="contact.means[0].value"></ion-input>
+    </form>
+    <div class="header-fixed-form-add-border-bottom" [class.header-fixed-form-edit-border-bottom]="isEditState">
+      <svg viewBox="0 0 500 130" preserveAspectRatio="xMinYMin meet">
+        <path d="M0,100 C300,200 300, 0 500,100 L500,00 L0,0 Z" 
+            style="stroke: none; fill:var(--ion-color-primary)"></path>
+      </svg>
+    </div>
+  </div>
+  <div class="page" [class.page-edit]="isEditState">
+    <ion-list *ngIf="isEditState">
+      <ion-item-sliding *ngFor="let item of contact.means">
+        <ion-row class="list-item">
+          <ion-col class="list-item-content">
+            <p class="list-item-content-title">{{ item.name }}</p>
+            <p class="list-item-content-subtitle">{{ item.value }}</p>
+          </ion-col>
+          <ion-row class="list-item-actions-checkable">
+            <button class="list-item-actions-item" (click)="onListItemEditButtonTouch(item)">
+              <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_edit_road_blue_24dp.png"></ion-img>
+            </button>
+            <button class="list-item-actions-item" (click)="onListItemRemoveButtonTouch(item)">
+              <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_remove_circle_red_24dp.png"></ion-img>
+            </button>
+            <div class="list-item-actions-item-check">
+              <ion-checkbox name="contactMeansMain" (ionChange)="onListItemCheck(item)" [checked]="item.isMain"></ion-checkbox>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-item-sliding>
+    </ion-list>
+    <div class="content-form-add-instructions" (click)="onContactButtonAddTouch()">
+      <ion-img src="/assets/icon/outline_dashboard_customize_blue_36dp.png"></ion-img>
+      <p>Informe os dados para contato e <u>clique aqui</u>!</p>
+    </div>
+  </div>
+  <ion-fab class="fab-button-bottom" *ngIf="isEditState" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onContactMeansButtonAddTouch()">
+      <ion-img class="fab-button-icon" src="/assets/icon/outline_add_white_36dp.png"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,124 @@
+@import "/src/global.scss";
+
+ion-content {
+  --background: var(--content-background-color);
+}
+
+ion-toolbar {
+  --border-style: none;
+}
+
+ion-avatar {
+  margin: auto;  
+}
+
+ion-input {
+  --placeholder-color: white;
+  --placeholder-opacity: 1;
+  border-bottom: 1px solid var(--ion-color-primary);
+  margin: auto;
+  height: 40px;
+  width: 200px;
+  font-size: 14px;
+  color: white;
+}
+
+ion-list {
+  margin-top: 226px;
+  background-color: transparent;
+}
+
+.header-fixed {
+  position: relative; 
+  background-color:var(--ion-color-primary); 
+  margin-bottom:0px; 
+  padding:0px!important; 
+  width: 100%;
+}
+
+.header-fixed-avatar  {
+  width: 48px !important;
+  height : 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+}
+
+.header-fixed-form-add {
+  background-color: var(--ion-color-primary);
+  width: 100%!important;
+  height: 256px;
+  padding-bottom: 18px;
+  margin-bottom:0px; 
+  padding:0px!important;
+  position: absolute;
+  top:0; 
+  left:0;
+  z-index:1;
+}
+
+.header-fixed-form-add-border-bottom {
+  --background: var(--content-background-color);
+  position: absolute;
+  top:206px;
+  left:0;
+  width: 100%;
+}
+
+.header-fixed-form-edit-border-bottom {
+  --background: var(--content-background-color);
+  position: absolute;
+  top:106px;
+  left:0;
+  width: 100%;
+}
+
+.header-fixed-form-edit {
+  background-color: var(--ion-color-primary);
+  width: 100%!important;
+  height: 156px;
+}
+
+.header-fixed-form-input-invalid {
+  --placeholder-color: var(--error-color);
+  --placeholder-opacity: 1;
+  border-bottom: 1px solid var(--error-color);
+  font-style: italic;
+}
+
+.header-fixed-form-input-focus {
+  --placeholder-color: white;
+  --placeholder-opacity: 1;
+  border-bottom: 1px solid #86c5f9;
+  font-style: normal;
+  color: white;
+}
+
+.page {
+  @extend .page;
+  background-image: url('/assets/icon/contact.means.add2.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom; 
+  background-size: 100% auto;
+}
+
+.content-form-add-instructions {
+  margin-top: 426px;
+  background-color: transparent;
+}
+
+.content-form-add-instructions ion-img {
+  width: 64px; 
+  margin: auto;
+}
+
+.content-form-add-instructions p {
+  text-align:center; 
+  font-size: 14px;
+}
+
+.page-edit {
+  @extend .page;
+  background-image: url('/assets/icon/contact.means.add2_50_opacity.png');
+}
+

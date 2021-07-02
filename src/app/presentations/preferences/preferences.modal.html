@@ -1,0 +1,47 @@
+<ion-content>
+  <div class="modal-page">
+    <div class="modal-page-fragment">
+      <p class="modal-page-title"> Parametros</p>
+      <p class="modal-page-subtitle">Selecione o meio para manter/interagir com os dados na aplicacao:</p>
+      <ion-list>
+        <ion-radio-group 
+            name="radioGroupEnvironment" 
+            [(ngModel)]="environmentId" 
+            (ionChange)="onRadioButtonChange($event)">
+          <ion-row>
+            <ion-item>
+              <ion-radio value="1"></ion-radio>
+              <ion-label class="radio-button-label">SQLite</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio value="2"></ion-radio>
+              <ion-label class="radio-button-label">HTTP</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio value="3"></ion-radio>
+              <ion-label class="radio-button-label">Native HTTP</ion-label>
+            </ion-item>
+          </ion-row>
+        </ion-radio-group>
+        <ion-item>
+          <div style="font-size: 12px;" [innerHTML]="contentHTML"></div>
+        </ion-item>
+        <form *ngIf="environmentId != 1" [formGroup]="formGroup">
+          <ion-input class="modal-form-input" type="text" 
+              id="httpURLNameInput"
+              formControlName="httpURLNameInput"
+              [placeholder]="httpURLNameInputInvalid ? 'digite a URL...' : 'http://localhost:3000'"
+              [class.modal-form-input-invalid]="httpURLNameInputInvalid"
+              [class.modal-form-input-focus]="isHttpURLNameInputFocus"
+              (ionFocus)="onInputFocus()"
+              (ionBlur)="onInputBlur()"
+              [(ngModel)]="httpURL"></ion-input>
+        </form>
+      </ion-list>
+    </div>
+    <div class="modal-page-fragment modal-page-actions">
+      <ion-label class="modal-page-actions-button-cancel" *ngIf="httpURLNameInputInvalid" (click)="onCancelButtonTouch()">Cancelar</ion-label>
+      <ion-label class="modal-page-actions-button-update" color="primary" (click)="onUpdateButtonTouch()">Atualizar</ion-label>
+    </div>
+  </div>
+</ion-content>

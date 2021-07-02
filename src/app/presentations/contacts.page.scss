@@ -1,0 +1,23 @@
+@import "/src/global.scss";
+
+.page {
+  background-image: url('/assets/icon/contacts_20_opacity.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right bottom; 
+}
+
+.page-instructions {
+  @extend .page;
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-instructions div {
+  background-color: transparent;
+}
+
+ion-list {
+  padding-top: 16px;
+}

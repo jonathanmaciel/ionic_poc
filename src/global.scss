@@ -1,0 +1,265 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+   --ion-color-primary: #2196f3;
+   --ion-color-secondary: white;
+   --content-background-color: rgb(224, 224, 224);
+   --error-color: #f44336;
+   --success-color: #4caf50;
+}
+
+.contact-means-modal .modal-wrapper {
+  width: 250px; 
+  height: 360px; 
+  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+}
+
+.preferences-modal .modal-wrapper {
+  width: 75%; 
+  height: 400px; 
+  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+}
+
+.instructions-modal .modal-wrapper {
+  width: 75%; 
+  height: 400px; 
+  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+}
+
+.toast-error {
+   --background: var(--error-color); 
+
+ }
+
+ .toast-success {
+   --background: var(--success-color); 
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //new
+
+.page {
+  background-color: var(--content-background-color); 
+  padding-left: 16px; 
+  padding-right: 16px; 
+  height: 100%!important;
+  width: 100%!important;
+  display: block;
+ }
+
+.toolbar-button {
+  background-color: transparent;
+}
+
+.toolbar-title {
+  min-height: 90px!important;text-align: center;padding-left: 6px; padding-right: 6px;
+}
+
+.toolbar-title-label {
+  color: var(--ion-color-secondary);
+  font-size: 16px;
+  text-align: left;
+}
+
+.toolbar-subtitle-label {
+  color: var(--ion-color-secondary);
+  font-size: 11px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.toolbar-button-icon {
+  color: var(--ion-color-secondary);
+  width: 32px;
+  height: 32px;
+}
+
+ion-toolbar {
+  --border-style: none;
+  --background: var(--ion-color-primary);
+  min-height: 90px!important;
+  max-height: 90px!important;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.list-item {
+  margin: 9px;
+  padding: 0px 0px 0px 18px;
+  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 14px;
+ }
+
+.list-item-content {
+  padding-top: 0px;
+  padding-bottom: 12px;
+}
+
+.list-item-content-title {
+  margin-bottom: 0px;
+}
+
+.list-item-content-subtitle {
+  font-size: 12px; 
+  margin-bottom: 0px; 
+  margin-top: 6px;
+}
+
+.list-item-actions {
+  width: 86px; 
+  margin-left: 12px;
+  margin-right: 6px;
+}
+
+.list-item-actions-checkable {
+  @extend .list-item-actions;
+  width: 122px; 
+ }
+ 
+.list-item-actions-item {
+  width: 30px; 
+  background-color: transparent; 
+  margin-left: 6px; 
+  margin-right: 0px; 
+  margin-top: 0px; 
+  margin-bottom: 0px;
+}
+
+.list-item-actions-item-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.list-item-actions-item-check {
+  margin: auto 6px auto auto;
+  width: 30px;
+ }
+
+.fab-button-bottom {
+  margin-right: 27px; margin-bottom: 13px;
+}
+
+.fab-button-icon {
+  width: 24px; height: 24px; margin: auto; 
+}
+
+.modal-page {
+  display: flex;
+  flex-direction: column; 
+  margin: 0 auto; 
+  height: 100%;
+  padding: 18px;
+}
+
+.modal-page-fragment {
+   flex:1;
+}
+.modal-page-title {
+  font-size: 16px; 
+  margin-top: 12px; 
+  margin-bottom: 24px;
+}
+
+.modal-page-subtitle {
+  font-size: 12px; 
+  margin-bottom: 0px; 
+  margin-right: 18px;
+}
+
+.modal-page-actions {
+   display: flex; 
+   align-self: stretch; 
+   align-items: flex-end; 
+   justify-content: flex-end; 
+}
+
+.modal-page-actions-button-cancel {
+  color:gray!important;
+  font-size: 14px;
+  margin-right: 12px; 
+  margin-bottom: 12px;
+}
+
+.modal-page-actions-button-update {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.modal-form-input {
+  --placeholder-color: var(--content-background-color);
+  --placeholder-opacity: 1;
+  border-bottom: 1px solid var(--content-background-color);
+  font-size: 14px;
+  height: 40px;
+  width: 200px;
+}
+
+.modal-form-input-focus {
+   --placeholder-color: var(--content-background-color);
+   font-style: normal;
+ }
+ 
+ .modal-form-input-invalid {
+   --placeholder-color: #ea6153
+ }
+ 
+ .modal-form-checkbox-label {
+   margin-left: 6px; font-size: 14px;
+ }
+ 
+ .modal-form-exception-message-box {
+   height: 50px; 
+   margin-bottom: 0px; 
+   padding-bottom: 0px;
+ }
+ 
+ .modal-form-exception-message-label {
+   color:var(--error-color);
+   font-size: 14px; 
+   margin-bottom: 0px; 
+   padding-bottom: 0px;
+ }

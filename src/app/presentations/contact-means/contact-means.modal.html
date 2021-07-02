@@ -1,0 +1,41 @@
+<ion-content>
+  <div class="modal-page">
+    <div class="modal-page-fragment">
+      <p class="modal-page-title"> Meio para Contato</p>
+      <form [formGroup]="formGroup">
+        <ion-input class="modal-form-input" type="text"
+            id="contactMeansNameInput"
+            formControlName="contactMeansNameInput"
+            [placeholder]="isContactMeansNameInputInvalid ? 'digite o meio para contato...' : 'meio para contato...'"
+            (ionFocus)="onInputFocus($event)"
+            (ionBlur)="onInputBlur($event)"
+            [class.modal-form-input-invalid]="isContactMeansNameInputInvalid"
+            [class.modal-form-input-focus]="isContactMeansNameInputFocus"
+            [(ngModel)]="contactMeans.name"></ion-input>
+        <ion-input class="modal-form-input" type="text"
+            id="contactMeansValueInput"
+            formControlName="contactMeansValueInput" 
+            [placeholder]="isContactMeansValueInputInvalid ? 'digite o contato...' : 'contato...'"
+            (ionFocus)="onInputFocus($event)"
+            (ionBlur)="onInputBlur($event)"
+            [class.modal-form-input-invalid]="isContactMeansValueInputInvalid"
+            [class.modal-form-input-focus]="isContactMeansValueInputFocus"
+            [(ngModel)]="contactMeans.value"></ion-input>
+        <ion-item>
+          <ion-checkbox 
+              formControlName="contactMeansMain" 
+              [(ngModel)]="contactMeans.isMain"
+              [disabled]="isCheckboxEnable"></ion-checkbox>
+          <p class="modal-form-checkbox-label">Principal</p>
+        </ion-item>
+        <div class="modal-form-exception-message-box">
+          <ion-label class="modal-form-exception-message-label">{{exceptionMessage}}</ion-label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-page-fragment modal-page-actions">
+      <ion-label class="modal-page-actions-button-cancel" *ngIf="isCancelable" (click)="onCancelButtonTouch()">Cancelar</ion-label>
+      <ion-label class="modal-page-actions-button-update" color="primary" (click)="onUpdateButtonTouch()">Atualizar</ion-label>
+    </div>
+  </div>
+</ion-content>
