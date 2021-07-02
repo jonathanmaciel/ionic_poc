@@ -25,7 +25,7 @@ export class Commons {
 
   private async showAction(message: string, type: string = 'error'): Promise<void> {
     const toast = await this.toastController.create({
-        cssClass: type == 'error' ? 'toast-error' : 'toast-success',
+        cssClass: type == 'error' ? 'notification-error' : 'notification-success',
         message: message,
         duration: type == 'error' ? 2000 : 1000
     });
@@ -35,19 +35,16 @@ export class Commons {
 
   public async showConfirmationAlert(header: string, message: string): Promise<any> {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
       header: header,
-      // subHeader: 
       message: message,
       buttons: [
-        {text: 'NAO', role: 'CANCEL'},
-        {text: 'SIM', role: 'OK'}
+        {cssClass: 'alert-cancel', text: 'NAO', role: 'CANCEL'},
+        {cssClass: 'alert-ok', text: 'SIM', role: 'OK'}
       ]
     });
     await alert.present();
     return alert.onDidDismiss();
   }
-
 
   public async showPreferencesModal(): Promise<void> {
     const modal = await this.modalController.create({
@@ -56,9 +53,7 @@ export class Commons {
     });
     await modal.present();
     await modal.onWillDismiss();
-    this.showNotificationSuccess('Parametros atualizados');
   }
-
 
   public async showContactMeansModal(contactMeans: ContactMeans, isFirst: boolean = false): Promise<any> {
     const modal = await this.modalController.create({

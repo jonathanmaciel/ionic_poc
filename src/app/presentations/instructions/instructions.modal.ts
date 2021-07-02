@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
@@ -6,7 +6,7 @@ import { ModalController, NavParams } from '@ionic/angular';
   templateUrl: './instructions.modal.html',
   styleUrls: ['./instructions.modal.scss'],
 })
-export class InstructionsModal implements OnInit {
+export class InstructionsModal {
 
   private status: boolean;
 
@@ -14,15 +14,13 @@ export class InstructionsModal implements OnInit {
 
   private _title: string;
 
-  ngOnInit() { }
-
   constructor(private navParams: NavParams, private modalController: ModalController) {
     this._title = this.navParams.get('title');
     this._text = this.navParams.get('text');
     this.status = this.navParams.get('status');
   }
 
-  close() {
+  onUpdateButtonTouch() {
     this.modalController.dismiss(this.status);
   }
 }

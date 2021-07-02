@@ -58,9 +58,32 @@ export class PreferencesModal {
   }
 
   async onUpdateButtonTouch() {
-    if (this.environmentId != Preferences.environmentLocalId && !this.commons.isFormGroupValid(this.formGroup)) return;
-    await this.appPreferences.store(Preferences.remoteHttpUrlKey, this.httpURL);
+    this.isLocalState ? await this.updateEnvironmentLocal()  
+                      : await this.updateEnvironmentRemote();
+  }
+
+  private async updateEnvironmentLocal(): Promise<void> {
+    const currentEenvironmentId: string = await this.appPreferences.fetch(Preferences.environmentKey);
+    if (this.environmentId == currentEenvironmentId) {
+      await this.modalController.dismiss();
+      return;
+    }
     await this.appPreferences.store(Preferences.environmentKey, this.environmentId);
+    this.commons.showNotificationSuccess('Parametros atualizados');
+    this.modalController.dismiss(null, 'updated');
+  }
+
+  private async updateEnvironmentRemote(): Promise<void> {
+    const currentEenvironmentId: string = await this.appPreferences.fetch(Preferences.environmentKey);
+    const currentRemoteHttpURL: string = await this.appPreferences.fetch(Preferences.remoteHttpUrlKey);
+    if (!this.commons.isFormGroupValid(this.formGroup)) return;
+    if (this.environmentId == currentEenvironmentId && this.httpURL == currentRemoteHttpURL) {
+      this.modalController.dismiss();
+      return;
+    }
+    await this.appPreferences.store(Preferences.environmentKey, this.environmentId);
+    await this.appPreferences.store(Preferences.remoteHttpUrlKey, this.httpURL);
+    this.commons.showNotificationSuccess('Parametros atualizados');
     this.modalController.dismiss(null, 'updated');
   }
 
@@ -78,5 +101,13 @@ export class PreferencesModal {
 
   onCancelButtonTouch() {
     this.modalController.dismiss(null, 'notUpdated');
+  }
+
+  get isLocalState(): boolean {
+    return this.environmentId == Preferences.environmentLocalId;
+  }
+
+  get isNotLocalState(): boolean {
+    return !this.isLocalState;
   }
 }

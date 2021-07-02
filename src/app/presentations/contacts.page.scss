@@ -1,23 +1,51 @@
 @import "/src/global.scss";
 
+ion-content {
+  --background: var(--content-background-color);
+}
+
+ion-list {
+  background-color: transparent; 
+}
+
+ion-avatar {
+  width: 40px; 
+  height: 40px; 
+  max-width: 40px;
+  max-height: 40px;
+  margin: auto; 
+  padding:0px;
+}
+
 .page {
   background-image: url('/assets/icon/contacts_20_opacity.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right bottom; 
+  padding-top: 16px; 
+  padding-bottom: 16px; 
 }
 
 .page-instructions {
   @extend .page;
   display: flex; 
-  align-items: center;
   flex-direction: column;
+  padding-top: 32px; 
 }
 
 .page-instructions div {
   background-color: transparent;
+  width: 100%; 
+  padding: 15px;
+  font-size: 14px;
 }
 
-ion-list {
-  padding-top: 16px;
+.page-instructions ion-img:first-child {
+  width: 230px; 
+  margin: 0px auto 0px auto;
+}
+
+.page-instructions ion-img {
+  width: 64px; 
+  margin: 32px auto auto auto;
 }

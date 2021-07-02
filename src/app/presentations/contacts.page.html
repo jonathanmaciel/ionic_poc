@@ -1,42 +1,52 @@
-<ion-toolbar>
-  <button class="toolbar-button" slot="start" (click)="onToolbarPreferencesButtonTouch()">
-    <ion-img class="toolbar-button-icon" src="/assets/icon/outline_contact_mail_white_36dp.png"></ion-img>
-  </button>
-  <button class="toolbar-button" slot="end" [routerLink]="['/contacts/add']">
-    <ion-img class="toolbar-button-icon" src="/assets/icon/outline_dashboard_customize_white_36dp.png"></ion-img>
-  </button>
-  <ion-title class="toolbar-title">
-    <ion-row class="toolbar-title-label">Flutter POC - Contatos</ion-row>
-    <ion-row class="toolbar-subtitle-label">Prova de conhecimento para uso do Ionic</ion-row>
-  </ion-title>
-</ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <button class="toolbar-button" slot="start" (click)="onToolbarPreferencesButtonTouch()">
+      <ion-img class="toolbar-button-icon" src="/assets/icon/outline_contact_mail_white_36dp.png"></ion-img>
+    </button>
+    <button class="toolbar-button" slot="end" [routerLink]="['/contacts/add']">
+      <ion-img class="toolbar-button-icon" src="/assets/icon/outline_dashboard_customize_white_36dp.png"></ion-img>
+    </button>
+    <ion-title class="toolbar-title">
+      <ion-row class="toolbar-title-label">Ionic POC - Contatos</ion-row>
+      <ion-row class="toolbar-subtitle-label">Prova de conhecimento para uso do Ionic</ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="page-instructions" *ngIf="isEmptyState">
-    <ion-img src="/assets/icon/contacts.add.png" style="width: 230px; margin: auto;"></ion-img>
-    <div style="width: 100%; padding: 15px;">
-      Por hora, priorizaremos os dados mais importantes para contactar alguem:<br/><br/>
-      O <b><i>nome</i></b> que voce ira identificar o contato<br/><br/>
-      Uma breve <b><i>descricao</i></b> que representa a sua relacao com o contato<br/><br/>
-      e o <b><i>meio</i></b> para contacta-lo. <br/><br/>Apos isso te mostraremos mais opcoes.
+    <ion-img src="/assets/icon/contacts.add.png"></ion-img>
+    <div>
+      Bem vindo!<br/><br/>
+      Esse aplicativo tem o objetivo de organizar todos os seus contatos.<br/><br/>
+      Para isso, o primeiro passo e <u>cadastrar o seu primeiro contato</u>, <b>e muito facil!</b><br/><br/> 
+      Clique aqui e vamos la!
     </div>
-    <ion-img src="/assets/icon/outline_dashboard_customize_blue_36dp.png" style="width: 64px; margin: auto;"></ion-img>
+    <ion-img src="/assets/icon/outline_dashboard_customize_blue_36dp.png" [routerLink]="['/contacts/add']"></ion-img>
   </div>
-  <ion-list class="page" *ngIf="isNotEmptyState">
-    <ion-item-sliding *ngFor="let item of contactsListed">
-      <ion-row class="list-item">
-        <ion-col class="list-item-content">
-          <p class="list-item-content-title">{{ item.name }}</p>
-          <p class="list-item-content-subtitle">{{ item.label }}</p>
-        </ion-col>
-        <ion-row class="list-item-actions">
-          <button class="list-item-actions-item" (click)="onListItemEditButtonTouch(item)">
-            <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_edit_road_blue_24dp.png"></ion-img>
-          </button>
-          <button class="list-item-actions-item" (click)="onListItemRemoveButtonTouch(item)">
-            <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_remove_circle_red_24dp.png"></ion-img>
-          </button>
+  <div class="page" *ngIf="isNotEmptyState">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of contactsListed">
+        <ion-row class="list-item">
+          <ion-col class="list-item-image">
+            <ion-avatar>
+              <ion-img src="/assets/icon/user.png"></ion-img>
+            </ion-avatar>
+          </ion-col>
+          <ion-col class="list-item-content">
+            <p class="list-item-title">{{ item.name }}</p>
+            <p class="list-item-subtitle">{{ item.label }}</p>
+          </ion-col>
+          <ion-row class="list-item-actions">
+            <button class="list-item-actions-item" (click)="onListItemEditButtonTouch(item)">
+              <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_edit_road_blue_24dp.png"></ion-img>
+            </button>
+            <button class="list-item-actions-item" (click)="onListItemRemoveButtonTouch(item)">
+              <ion-img class="list-item-actions-item-icon" src="/assets/icon/outline_remove_circle_red_24dp.png"></ion-img>
+            </button>
+          </ion-row>
         </ion-row>
-      </ion-row>
-    </ion-item-sliding>
-  </ion-list>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
 </ion-content>

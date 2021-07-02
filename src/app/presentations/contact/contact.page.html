@@ -34,7 +34,7 @@
           (ionBlur)="onInputBlur($event)"
           [class.header-fixed-form-input-focus]="isDescriptionFocus"
           [(ngModel)]="contact.description"></ion-input>
-      <ion-input *ngIf="contact.id == 0" type="text" 
+      <ion-input *ngIf="isAddState" type="text" 
           id="contactMeansNameInput"
           formControlName="contactMeansNameInput"
           [placeholder]="isContactMeansNameInputInvalid ? 'digite o meio para contato...' : 'meio para contato...'"
@@ -43,7 +43,7 @@
           [class.header-fixed-form-input-focus]="isContactMeansNameInputFocus"
           [class.header-fixed-form-input-invalid]="isContactMeansNameInputInvalid"
           [(ngModel)]="contact.means[0].name"></ion-input>
-      <ion-input *ngIf="contact.id == 0" type="text"
+      <ion-input *ngIf="isAddState" type="text"
           id="contactMeansValueInput"
           formControlName="contactMeansValueInput" 
           [placeholder]="isContactMeansValueInputInvalid ? 'digite o contato...' : 'contato...'"
@@ -65,8 +65,8 @@
       <ion-item-sliding *ngFor="let item of contact.means">
         <ion-row class="list-item">
           <ion-col class="list-item-content">
-            <p class="list-item-content-title">{{ item.name }}</p>
-            <p class="list-item-content-subtitle">{{ item.value }}</p>
+            <p class="list-item-title">{{ item.name }}</p>
+            <p class="list-item-subtitle">{{ item.value }}</p>
           </ion-col>
           <ion-row class="list-item-actions-checkable">
             <button class="list-item-actions-item" (click)="onListItemEditButtonTouch(item)">
@@ -82,7 +82,7 @@
         </ion-row>
       </ion-item-sliding>
     </ion-list>
-    <div class="content-form-add-instructions" (click)="onContactButtonAddTouch()">
+    <div class="content-form-add-instructions" *ngIf="isAddState" (click)="onContactButtonAddTouch()">
       <ion-img src="/assets/icon/outline_dashboard_customize_blue_36dp.png"></ion-img>
       <p>Informe os dados para contato e <u>clique aqui</u>!</p>
     </div>

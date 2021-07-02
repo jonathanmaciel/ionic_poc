@@ -1,29 +1,18 @@
-
 <ion-content>
-
-  <div style="display: flex;flex-direction: column; margin: 0 auto; height: 100%;">
-
-    <div style="flex: 1;">
-      <p style="font-size: 16px; padding-left: 12px; padding-top: 12px; margin-bottom: 24px;">{{_title}}</p>
-      <div style="font-size: 12px; margin: 20px;" [innerHTML]="_text"></div>
-      <ion-item>
-        <p style="margin-left: 6px;font-size: 12px;font-style: italic;width: 100%;">Voce quer ser lembrado novamente no proximo contato?</p>
+  <div class="modal-page">
+    <div class="modal-page-fragment">
+      <p class="modal-title">{{_title}}</p>
+      <div class="modal-content-instructions" [innerHTML]="_text"></div>
+      <div class="checkbox-item">
+        <p class="checkbox-label">Voce quer ser lembrado novamente no proximo contato?</p>
         <ion-checkbox 
             name="statusCheckbox" 
             [(ngModel)]="status"
             checked></ion-checkbox>
-      </ion-item>
+      </div>
     </div>
-
-
-    <div style="height: 100%; width: 100%; display: flex; align-self: stretch; align-items: flex-end; justify-content: flex-end;">
-      <ion-label color="primary" (click)="close()" style="font-size: 14px;margin-right: 12px; margin-bottom: 12px;">Fechar</ion-label>
+    <div class="modal-page-fragment modal-page-actions">
+      <ion-label class="modal-actions-button-update" color="primary" (click)="onUpdateButtonTouch()">Fechar</ion-label>
     </div>
   </div>
-  
-
-  
-
-  
-  
 </ion-content>

@@ -26,59 +26,24 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 :root {
-   --ion-color-primary: #2196f3;
-   --ion-color-secondary: white;
-   --content-background-color: rgb(224, 224, 224);
-   --error-color: #f44336;
-   --success-color: #4caf50;
+  --ion-color-primary: #2196f3;
+  --ion-color-secondary: white;
+  --content-background-color: rgb(224, 224, 224);
+  --error-color: #f44336;
+  --success-color: #4caf50;
 }
 
-.contact-means-modal .modal-wrapper {
-  width: 250px; 
-  height: 360px; 
-  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
-  border-radius: 5px;
+/* ionic components */
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  min-height: 90px!important;
+  max-height: 90px!important;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
-.preferences-modal .modal-wrapper {
-  width: 75%; 
-  height: 400px; 
-  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
-  border-radius: 5px;
-}
-
-.instructions-modal .modal-wrapper {
-  width: 75%; 
-  height: 400px; 
-  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
-  border-radius: 5px;
-}
-
-.toast-error {
-   --background: var(--error-color); 
-
- }
-
- .toast-success {
-   --background: var(--success-color); 
- }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- //new
+/* screens */
 
 .page {
   background-color: var(--content-background-color); 
@@ -87,14 +52,19 @@
   height: 100%!important;
   width: 100%!important;
   display: block;
- }
+}
+
+/* toolbars */
 
 .toolbar-button {
   background-color: transparent;
 }
 
 .toolbar-title {
-  min-height: 90px!important;text-align: center;padding-left: 6px; padding-right: 6px;
+  min-height: 90px!important;
+  text-align: center;
+  padding-left: 6px; 
+  padding-right: 6px;
 }
 
 .toolbar-title-label {
@@ -116,14 +86,7 @@
   height: 32px;
 }
 
-ion-toolbar {
-  --border-style: none;
-  --background: var(--ion-color-primary);
-  min-height: 90px!important;
-  max-height: 90px!important;
-  padding-left: 12px;
-  padding-right: 12px;
-}
+/* lists */
 
 .list-item {
   margin: 9px;
@@ -132,21 +95,31 @@ ion-toolbar {
   border-radius: 5px;
   background-color: white;
   font-size: 14px;
- }
+}
 
 .list-item-content {
   padding-top: 0px;
   padding-bottom: 12px;
 }
 
-.list-item-content-title {
+.list-item-image {
+  width: 40px; 
+  height: 40px; 
+  max-width: 40px;
+  max-height: 40px;
+  margin: auto 12px auto 0px;
+  padding:0px;
+}
+
+.list-item-title {
   margin-bottom: 0px;
 }
 
-.list-item-content-subtitle {
+.list-item-subtitle {
   font-size: 12px; 
   margin-bottom: 0px; 
   margin-top: 6px;
+  color: gray;
 }
 
 .list-item-actions {
@@ -158,7 +131,7 @@ ion-toolbar {
 .list-item-actions-checkable {
   @extend .list-item-actions;
   width: 122px; 
- }
+}
  
 .list-item-actions-item {
   width: 30px; 
@@ -177,7 +150,7 @@ ion-toolbar {
 .list-item-actions-item-check {
   margin: auto 6px auto auto;
   width: 30px;
- }
+}
 
 .fab-button-bottom {
   margin-right: 27px; margin-bottom: 13px;
@@ -187,46 +160,72 @@ ion-toolbar {
   width: 24px; height: 24px; margin: auto; 
 }
 
+/* notifications */
+
+.notification-error {
+  --background: var(--error-color); 
+}
+
+.notification-success {
+  --background: var(--success-color); 
+}
+
+/* modal wrappers */
+
+.modal-content {
+  box-shadow: 0px 3px 7px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+}
+
+.preferences-modal .modal-wrapper {
+  @extend .modal-content;
+  width: 75%; 
+  height: 400px; 
+}
+
+.instructions-modal .modal-wrapper {
+  @extend .modal-content;
+  width: 75%; 
+  height: 400px; 
+}
+
+.contact-means-modal .modal-wrapper {
+  @extend .modal-content;
+  width: 250px; 
+  height: 360px; 
+}
+
+/* modal */
+
 .modal-page {
   display: flex;
   flex-direction: column; 
-  margin: 0 auto; 
+  align-items: flex-start;
   height: 100%;
   padding: 18px;
 }
 
 .modal-page-fragment {
-   flex:1;
-}
-.modal-page-title {
-  font-size: 16px; 
-  margin-top: 12px; 
-  margin-bottom: 24px;
-}
-
-.modal-page-subtitle {
-  font-size: 12px; 
-  margin-bottom: 0px; 
-  margin-right: 18px;
+  flex:1;
 }
 
 .modal-page-actions {
-   display: flex; 
-   align-self: stretch; 
-   align-items: flex-end; 
-   justify-content: flex-end; 
+  display: flex; 
+  align-self: stretch; 
+  align-items: flex-end; 
+  justify-content: flex-end; 
 }
 
-.modal-page-actions-button-cancel {
-  color:gray!important;
-  font-size: 14px;
-  margin-right: 12px; 
-  margin-bottom: 12px;
+.modal-title {
+  font-size: 16px; 
+  margin-top: 12px; 
+  margin-bottom: 24px;
+  font-weight: bold;
 }
 
-.modal-page-actions-button-update {
-  font-size: 14px;
-  margin-bottom: 12px;
+.modal-form {
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .modal-form-input {
@@ -239,27 +238,48 @@ ion-toolbar {
 }
 
 .modal-form-input-focus {
-   --placeholder-color: var(--content-background-color);
-   font-style: normal;
- }
+  --placeholder-color: var(--content-background-color);
+  font-style: normal;
+}
  
- .modal-form-input-invalid {
-   --placeholder-color: #ea6153
- }
+.modal-form-input-invalid {
+  --placeholder-color: var(--error-color);
+  font-style: italic;
+}
  
- .modal-form-checkbox-label {
-   margin-left: 6px; font-size: 14px;
- }
+.modal-form-checkbox-label {
+  margin-left: 6px;
+  font-size: 14px;
+}
  
- .modal-form-exception-message-box {
-   height: 50px; 
-   margin-bottom: 0px; 
-   padding-bottom: 0px;
- }
+.modal-form-exception-message-box {
+  height: 50px; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
  
- .modal-form-exception-message-label {
-   color:var(--error-color);
-   font-size: 14px; 
-   margin-bottom: 0px; 
-   padding-bottom: 0px;
- }
+.modal-form-exception-message-label {
+  color:var(--error-color);
+  font-size: 14px; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
+
+.modal-actions-button-cancel {
+  color:gray;
+  font-size: 14px;
+  margin-right: 12px; 
+  margin-bottom: 12px;
+}
+
+.modal-actions-button-update {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* alerts */
+
+.alert-wrapper .alert-button:first-child {
+  color: var(--error-color);
+  opacity: 0.5;
+}
